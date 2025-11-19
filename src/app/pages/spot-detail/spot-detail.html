@@ -1,0 +1,32 @@
+<div class="spot-container">
+  <div class="spot-card">
+    <h2>Spot {{ spotData?.id }}</h2>
+    <p class="muted">
+      Status: <strong>{{ spotData?.status }}</strong>
+    </p>
+
+    <div class="details">
+      <div class="row">
+        <span>Floor</span><span>{{ spotData?.floor }}</span>
+      </div>
+      <div class="row">
+        <span>Last Occupied</span><span>{{ spotData?.lastOccupied }}</span>
+      </div>
+      <div class="row">
+        <span>Current Vehicle</span
+        ><span>{{ spotData?.currentVehicle || "—" }}</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <!-- Release button visible when the spot is occupied -->
+      <button
+        *ngIf="spotData?.status === 'Occupied'"
+        class="btn btn-secondary"
+        (click)="releaseCurrentSpot()"
+      >
+        Release Spot
+      </button>
+    </div>
+  </div>
+</div>

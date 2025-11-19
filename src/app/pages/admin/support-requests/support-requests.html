@@ -1,0 +1,27 @@
+<div class="admin-container">
+  <div class="admin-card">
+    <div class="admin-header"><h2>Support Requests</h2>
+      <div class="actions">
+        <button (click)="load()" class="btn">Refresh</button>
+        <button (click)="exportJSON()" class="btn-primary">Export JSON</button>
+        <button (click)="clearAll()" class="btn-danger">Clear All</button>
+      </div>
+    </div>
+
+    <div *ngIf="requests.length === 0" class="muted">No support requests saved.</div>
+
+    <div class="requests-list">
+      <div *ngFor="let r of requests" class="request-card">
+        <div class="r-left">
+          <div class="r-id">{{ r.id }}</div>
+          <div class="r-meta">{{ r.name }} • {{ r.email }} • {{ r.createdAt | date:'short' }}</div>
+          <div class="r-spot" *ngIf="r.spotId">Spot: {{ r.spotId }}</div>
+          <div class="r-booking" *ngIf="r.bookingId">Booking: {{ r.bookingId }}</div>
+        </div>
+        <div class="r-right">
+          <pre class="r-message">{{ r.message }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

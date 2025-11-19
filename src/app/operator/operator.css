@@ -1,0 +1,45 @@
+/* Operator page minimal theming to match central palette */
+.operator-container {
+  padding: 28px;
+  display: flex;
+  justify-content: center;
+}
+.operator-card {
+  width: 100%;
+  max-width: 900px;
+  background: var(--mm-card);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(2, 6, 23, 0.06);
+}
+.operator-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--mm-primary-dark);
+  margin-bottom: 12px;
+}
+.operator-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.operator-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.operator-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(2, 6, 23, 0.04);
+  background: linear-gradient(180deg, var(--mm-card), #fbfdff);
+}
+
+@media (max-width: 768px) {
+  .operator-card {
+    padding: 14px;
+  }
+}

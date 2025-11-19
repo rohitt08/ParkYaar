@@ -1,0 +1,58 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <div class="profile-left">
+      <div class="avatar" aria-hidden="true">{{ user?.fullName ? (user.fullName.charAt(0) || 'O') : 'O' }}</div>
+      <div class="profile-meta">
+        <h2 class="profile-name">{{ user?.fullName || user?.name || 'Operator' }}</h2>
+        <p class="muted profile-email">{{ user?.emailId || user?.email || 'No email provided' }}</p>
+        <div class="profile-actions">
+          <button class="btn btn-outline" *ngIf="!editing" (click)="editing=true">Edit</button>
+          <button class="btn btn-primary" *ngIf="editing" (click)="saveProfile()">Save</button>
+        </div>
+        <div class="profile-stats" aria-hidden="true">
+          <div class="stat small muted">Bookings</div>
+          <div class="stat-value" aria-live="polite">{{ bookings.length || 0 }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-right">
+      <section class="profile-info">
+        <div class="profile-row"><div class="label">Role</div><div class="value">{{ user?.role || 'Operator' }}</div></div>
+        <div class="profile-row"><div class="label">Extra ID</div><div class="value">{{ user?.extraId || 'N/A' }}</div></div>
+      </section>
+
+      <section *ngIf="editing" class="profile-edit">
+        <label>Full name</label>
+        <input class="input" type="text" [(ngModel)]="user.fullName" />
+        <label>Email</label>
+        <input class="input" type="text" [(ngModel)]="user.emailId" />
+        <label>Mobile</label>
+        <input class="input" type="text" [(ngModel)]="user.mobileNo" />
+      </section>
+
+      <hr class="divider" />
+
+      <h3 class="section-title">Your Bookings</h3>
+      <div *ngIf="bookings.length === 0" class="bookings-empty muted">No bookings yet</div>
+
+      <div class="bookings">
+        <div *ngFor="let b of bookings" class="booking-card">
+          <div class="booking-left">
+            <div class="spot-pill">{{ b.spotId }}</div>
+            <div class="muted small">{{ b.vehicleNumber }} • {{ b.vehicleType | uppercase }}</div>
+            <div class="small">Entry: {{ b.entryTime | date:'short' }}</div>
+            <div *ngIf="b.exitTime" class="small">Exit: {{ b.exitTime | date:'short' }}</div>
+          </div>
+          <div class="booking-right">
+            <div class="amount">₹{{ b.amount }}</div>
+            <div class="muted small">{{ b.status }}</div>
+            <div class="booking-actions" *ngIf="b.status==='active'">
+              <button class="btn-release" (click)="releaseBooking(b)">Release</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

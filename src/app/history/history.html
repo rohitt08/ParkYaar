@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="history-container">
+  <!-- Only show the history data table per request -->
+  <div class="history-table">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Vehicle Number</th>
+          <th>Type</th>
+          <th>Spot</th>
+          <th>Entry Time</th>
+          <th>Exit Time</th>
+          <th>Duration / Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of filteredHistory">
+          <td>{{ record.id }}</td>
+          <td class="vehicle-number">{{ record.vehicleNumber }}</td>
+          <td>
+            <span class="vehicle-type" [class]="record.vehicleType.toLowerCase()">
+              {{ record.vehicleType }}
+            </span>
+          </td>
+          <td class="spot-number">{{ record.spotId }}</td>
+          <td>{{ record.entryTime | date:'short' }}</td>
+          <td>{{ record.exitTime ? (record.exitTime | date:'short') : '—' }}</td>
+          <td class="duration-amount">
+            <div class="duration">{{ record.exitTime ? 'Completed' : 'Active' }}</div>
+            <div class="amount">₹{{ record.amount }}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="filteredHistory.length === 0" class="no-data">
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="8" x2="12" y2="12"/>
+      <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    <p>No records found</p>
+  </div>
+</div>

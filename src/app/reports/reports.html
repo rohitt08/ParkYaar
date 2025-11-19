@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="reports-container">
+  <!-- Only show reports data sections per request -->
+  <div class="reports-grid">
+    <div class="report-card">
+      <div class="card-header">
+        <h3>Vehicle Type Distribution</h3>
+      </div>
+      <div class="chart-container">
+        <div class="breakdown-list">
+          <div class="breakdown-item" *ngFor="let item of vehicleTypeBreakdown">
+            <div class="breakdown-info">
+              <span class="breakdown-label">{{ item.type }}</span>
+              <span class="breakdown-count">{{ item.count }} vehicles</span>
+            </div>
+            <div class="breakdown-bar">
+              <div class="breakdown-fill" [style.width.%]="item.percentage" 
+                   [class]="item.type.toLowerCase()"></div>
+              <span class="breakdown-percentage">{{ item.percentage }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-card">
+      <div class="card-header">
+        <h3>Daily Statistics</h3>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Vehicles</th>
+              <th>Revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stat of dailyStats">
+              <td class="day-name">{{ stat.day }}</td>
+              <td class="vehicle-count">{{ stat.vehicles }}</td>
+              <td class="revenue-amount">₹{{ stat.revenue }}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td><strong>{{ totalVehicles }}</strong></td>
+              <td><strong>₹{{ totalRevenue }}</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

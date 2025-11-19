@@ -1,0 +1,32 @@
+<div class="support-container">
+  <div class="support-card">
+    <h2>Contact Support</h2>
+
+    <form (ngSubmit)="submit()" #f="ngForm" class="support-form">
+      <label>Name</label>
+      <input name="name" [(ngModel)]="name" />
+
+      <label>Email * </label>
+      <input name="email" type="email" [(ngModel)]="email" required />
+
+      <label>Spot ID (optional)</label>
+      <input name="spotId" [(ngModel)]="spotId" />
+
+      <label>Booking ID (optional)</label>
+      <input name="bookingId" [(ngModel)]="bookingId" />
+
+      <label>Message *</label>
+      <textarea name="message" rows="6" [(ngModel)]="message" required></textarea>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Send Request</button>
+        <button type="button" class="btn-secondary" (click)="goBack()">Cancel</button>
+      </div>
+
+      <div class="form-feedback">
+        <div *ngIf="error" class="error">{{ error }}</div>
+        <div *ngIf="success" class="success">Support request submitted. We'll get back to you soon.</div>
+      </div>
+    </form>
+  </div>
+</div>

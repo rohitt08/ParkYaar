@@ -1,0 +1,45 @@
+.profile-container{display:flex;justify-content:center;padding:28px;background:transparent}
+.profile-card{background:var(--mm-card);padding:24px;border-radius:14px;box-shadow:0 18px 50px rgba(2,6,23,0.06);width:920px;max-width:calc(100% - 40px);display:grid;grid-template-columns:320px 1fr;gap:20px}
+.profile-left{padding:20px;background:linear-gradient(180deg,var(--mm-bg),var(--mm-card));border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.avatar{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:44px;background:linear-gradient(135deg,rgba(11,97,164,0.08),rgba(59,130,246,0.14));color:var(--mm-primary-dark);font-weight:800;box-shadow:0 8px 26px rgba(11,97,164,0.06)}
+.profile-meta{text-align:center}
+.profile-name{margin:0;font-size:22px;font-weight:800;color:var(--mm-primary-dark)}
+.profile-email{margin:6px 0 0 0;font-size:13px;color:var(--mm-muted)}
+.profile-actions{margin-top:10px;display:flex;gap:8px}
+.btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn-outline{background:var(--mm-card);border:1px solid rgba(15,23,42,0.04);color:var(--mm-primary-dark)}
+.btn-primary{background:linear-gradient(135deg,var(--mm-primary),var(--mm-primary-dark));color:#fff}
+.btn-secondary{background:var(--mm-bg);border:1px solid #e6edf8;color:var(--mm-primary-dark);padding:8px 12px}
+
+.profile-right{padding:6px 6px 0 0}
+.profile-info{margin-top:0;background:transparent;padding:6px}
+.profile-row{display:flex;justify-content:space-between;padding:12px 8px;border-top:1px solid rgba(2,6,23,0.04)}
+.label{color:var(--mm-muted);font-weight:700}
+.value{color:var(--mm-primary-dark)}
+.profile-edit{margin-top:12px;text-align:left;display:flex;flex-direction:column;gap:8px}
+.input{padding:10px;border-radius:8px;border:1px solid #e6edf8}
+.divider{border:none;border-top:1px solid rgba(2,6,23,0.04);margin:16px 0}
+.section-title{margin:0 0 12px 0;font-size:16px;color:var(--mm-primary-dark)}
+
+.bookings{display:flex;flex-direction:column;gap:12px}
+.booking-card{display:flex;justify-content:space-between;align-items:center;padding:14px;border-radius:12px;background:var(--mm-card);border:1px solid rgba(2,6,23,0.04);box-shadow:0 8px 18px rgba(2,6,23,0.02)}
+.booking-left{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.spot-pill{background:rgba(37,99,235,0.08);color:var(--mm-primary);padding:8px 12px;border-radius:12px;font-weight:800}
+.booking-right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.amount{font-weight:800;color:var(--success)}
+.small{font-size:12px;color:var(--mm-muted)}
+.booking-actions{margin-top:6px}
+.btn-release{background:#ef4444;color:#fff;padding:6px 10px;border-radius:8px;border:none}
+
+@media (max-width:900px){
+	.profile-card{grid-template-columns:1fr;width:100%}
+	.profile-left{flex-direction:row;justify-content:space-between;padding:12px}
+	.avatar{width:72px;height:72px;font-size:24px}
+}
+
+@media (max-width:480px){
+	.profile-card{padding:14px}
+	.avatar{width:64px;height:64px;font-size:20px}
+}
+
+.bookings-empty{color:var(--mm-muted);padding:12px;background:linear-gradient(180deg,var(--mm-card),#fbfdff);border-radius:8px}

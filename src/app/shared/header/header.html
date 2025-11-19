@@ -1,0 +1,43 @@
+<header class="app-header">
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle" (click)="toggleNav()" aria-label="Toggle navigation" [attr.aria-expanded]="showNav">
+    <i class="material-icons">menu</i>
+  </button>
+  <a routerLink="/dashboard" class="logo">
+    <span class="logo-square">P</span>
+    ParkMate
+  </a>
+
+  <nav class="nav-links" [class.open]="showNav">
+    <a routerLink="/dashboard" routerLinkActive="active" class="nav-link" (click)="showNav=false">
+      <i class="material-icons" aria-hidden="true"></i>
+      Dashboard
+    </a>
+    <a routerLink="/history" class="nav-link" (click)="showNav=false">
+      <i class="material-icons" aria-hidden="true"></i>
+      History
+    </a>
+    <a routerLink="/reports" class="nav-link" (click)="showNav=false">
+      <i class="material-icons" aria-hidden="true"></i>
+      Reports
+    </a>
+  </nav>
+
+  <div class="spacer"></div>
+
+<div class="user-info">
+    <button class="user-chip" (click)="openProfile()" title="Open operator profile">
+        <i class="material-icons" aria-hidden="true"></i>
+        <span class="user-label">Entry User</span>
+    </button>
+</div>
+
+<button class="logout-btn" (click)="logoff()">
+    <i class="material-icons" aria-hidden="true"></i>
+    <span class="logout-label">Logout</span>
+</button>
+  <!-- Floating support button (icon-only) -->
+  <button class="support-float" (click)="openSupport()" title="Contact Support" aria-label="Contact Support">
+    <i class="material-icons" aria-hidden="true">support_agent</i>
+  </button>
+</header>

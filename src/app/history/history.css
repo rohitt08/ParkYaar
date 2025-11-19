@@ -1,0 +1,662 @@
+.history-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.page-header {
+  background: linear-gradient(135deg, var(--mm-primary) 0%, var(--mm-primary-dark) 100%);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-icon {
+  width: 72px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 8px 32px rgba(2,6,23,0.08);
+}
+
+.page-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-header p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.summary-stats {
+  display: flex;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  padding: 20px 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.summary-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.summary-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(2,6,23,0.08);
+}
+
+.filter-section {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 14px 28px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.filter-btn:hover::before {
+  left: 100%;
+}
+
+.filter-btn:hover {
+  border-color: var(--mm-primary);
+  color: var(--mm-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11,97,164,0.12);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--mm-primary) 0%, var(--mm-primary-dark) 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 8px 25px rgba(11,97,164,0.16);
+}
+
+.history-table {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #f3f4f6;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+th {
+  padding: 18px 20px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 800;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  border-bottom: 2px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+th:first-child {
+  border-radius: 12px 0 0 0;
+}
+
+th:last-child {
+  border-radius: 0 12px 0 0;
+}
+
+td {
+  padding: 20px;
+  font-size: 14px;
+  color: #1e293b;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+tbody tr {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background: linear-gradient(to right, #fafbfc, #f8fafc);
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.vehicle-number {
+  font-weight: 700;
+  color: #0f172a;
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+/* ensure long vehicle numbers wrap instead of overlapping other columns */
+.vehicle-number {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.vehicle-type {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-type.car {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e40af;
+}
+
+.vehicle-type.bike {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  color: #166534;
+}
+
+.vehicle-type.suv {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+}
+
+.spot-number {
+  font-weight: 700;
+  color: var(--mm-primary);
+  font-size: 15px;
+  background: rgba(11,97,164,0.06);
+  padding: 16px 12px;
+  border-radius: 8px;
+  display: flex;
+}
+
+.duration-amount {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  /* center duration and amount horizontally */
+}
+
+.duration-amount .duration {
+  font-weight: 700;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  font-family: monospace;
+}
+
+.duration-amount .amount {
+  font-weight: 800;
+  color: #059669;
+  font-size: 16px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  padding: 8px 16px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* Layout tweaks: ensure columns align nicely */
+table {
+  table-layout: auto;
+}
+
+/* Column alignment: ID center, Type center, Spot center, Times center, Duration/Amount center */
+table td:nth-child(1),
+table th:nth-child(1) {
+  text-align: center;
+  width: 56px;
+}
+
+table td:nth-child(3),
+table th:nth-child(3) {
+  text-align: center;
+  width: 120px;
+}
+
+table td:nth-child(4),
+table th:nth-child(4) {
+  text-align: center;
+  width: 110px;
+}
+
+table td:nth-child(5),
+table th:nth-child(5),
+table td:nth-child(6),
+table th:nth-child(6) {
+  text-align: center;
+}
+
+table td.duration-amount {
+  text-align: center;
+}
+
+/* Make spot-number an inline-flex so its content centers vertically/horizontally */
+.spot-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-data {
+  text-align: center;
+  padding: 80px 20px;
+  color: #9ca3af;
+}
+
+.no-data svg {
+  margin-bottom: 20px;
+  opacity: 0.3;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.no-data p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+/* Scrollbar styling */
+.history-table::-webkit-scrollbar {
+  height: 8px;
+}
+
+.history-table::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.history-table::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+}
+
+.history-table::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+@media (max-width: 1024px) {
+  .history-container {
+    padding: 24px;
+  }
+
+  .page-header {
+    padding: 32px 28px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .summary-stats {
+    gap: 24px;
+  }
+
+  .summary-item {
+    padding: 18px 24px;
+  }
+
+  .summary-value {
+    font-size: 24px;
+  }
+
+  table {
+    min-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .history-container {
+    padding: 16px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 28px 20px;
+  }
+
+  .page-header::before,
+  .page-header::after {
+    display: none;
+  }
+
+  .header-content {
+    gap: 16px;
+  }
+
+  .header-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .header-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+  }
+
+  .summary-stats {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .summary-item {
+    flex: 1;
+    padding: 14px 16px;
+    align-items: center;
+  }
+
+  .summary-label {
+    font-size: 10px;
+  }
+
+  .summary-value {
+    font-size: 20px;
+  }
+
+  .filter-section {
+    gap: 8px;
+  }
+
+  .filter-btn {
+    flex: 1;
+    min-width: calc(50% - 4px);
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .history-table {
+    overflow-x: auto;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  th,
+  td {
+    padding: 12px 10px;
+    font-size: 12px;
+  }
+
+  th {
+    font-size: 10px;
+  }
+
+  .vehicle-number {
+    font-size: 13px;
+  }
+
+  .vehicle-type {
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+
+  .spot-number {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+
+  .duration {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .amount {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-container {
+    padding: 12px;
+  }
+
+  .page-header {
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  .header-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .header-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .page-header h1 {
+    font-size: 20px;
+  }
+
+  .page-header p {
+    font-size: 12px;
+  }
+
+  .summary-item {
+    padding: 12px;
+  }
+
+  .summary-label {
+    font-size: 9px;
+  }
+
+  .summary-value {
+    font-size: 18px;
+  }
+
+  .filter-section {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    padding: 10px 12px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  .history-table {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  th,
+  td {
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+
+  th {
+    font-size: 9px;
+    letter-spacing: 0.8px;
+  }
+
+  .vehicle-number {
+    font-size: 12px;
+  }
+
+  .vehicle-type {
+    padding: 3px 8px;
+    font-size: 9px;
+  }
+
+  .spot-number,
+  .duration {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+
+  .amount {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+
+  .no-data {
+    padding: 60px 20px;
+  }
+
+  .no-data svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .no-data p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .page-header h1 {
+    font-size: 18px;
+  }
+
+  .summary-value {
+    font-size: 16px;
+  }
+
+  .filter-btn {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  table {
+    min-width: 550px;
+  }
+}

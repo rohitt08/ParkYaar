@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ParkMate - Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    
+  </head>
+
+  <body>
+    <app-header></app-header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+  <div id="aria-live" aria-live="polite" class="sr-only"></div>
+  <div id="toast-container" class="toast-container" aria-hidden="true"></div>
+      <!-- Dropdown Filters Row (Add this after <div class="main-content">) -->
+      <div class="filters-container">
+        <div class="filter-group">
+          <div class="filter-label">
+            <i class="material-icons">location_on</i>
+            Site
+          </div>
+          <select class="filter-select" [(ngModel)]="selectedSite" name="site">
+            <option value="">Select Site</option>
+            <option value="pavillion">The Pavillion Mall</option>
+            <option value="nexus">Nexus Westend Mall</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">
+            <i class="material-icons">business</i>
+            Building
+          </div>
+          <select class="filter-select" [(ngModel)]="selectedBuilding" name="building">
+            <option value="">Select Building</option>
+            <option value="main">Main Tower</option>
+            <option value="annex">Annex Block</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">
+            <i class="material-icons">layers</i>
+            Floor
+          </div>
+          <select class="filter-select" [(ngModel)]="selectedFloor" name="floor">
+            <option value="">Select Floor</option>
+            <option value="Ground">Ground</option>
+            <option value="First">First</option>
+            <option value="Second">Second</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">
+            <i class="material-icons">filter_list</i>
+            Status
+          </div>
+          <select class="filter-select" [(ngModel)]="statusFilter" name="status">
+            <option value="">All</option>
+            <option value="available">Available</option>
+            <option value="occupied">Occupied</option>
+          </select>
+        </div>
+
+        <button class="filter-btn" (click)="applyFilters()">
+          <i class="material-icons">filter_alt</i>
+          Apply Filters
+        </button>
+
+        <button class="filter-btn reset" (click)="resetFilters()">
+          <i class="material-icons">refresh</i>
+          Reset
+        </button>
+      </div>
+      <!-- Statistics Section -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Spots</div>
+          <div class="stat-value">{{ totalSpots }}</div>
+          <i class="material-icons stat-icon">local_parking</i>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Available</div>
+          <div class="stat-value">{{ availableCount }}</div>
+          <i class="material-icons stat-icon">check_circle</i>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Occupied</div>
+          <div class="stat-value">{{ occupiedCount }}</div>
+          <i class="material-icons stat-icon">directions_car</i>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Occupancy Rate</div>
+          <div class="stat-value">{{ occupancyRate }}%</div>
+          <i class="material-icons stat-icon">trending_up</i>
+        </div>
+      </div>
+  <!-- child route content will render here when visiting History / Reports / Profile -->
+  <div class="route-container">
+    <router-outlet></router-outlet>
+  </div>
+      <!-- Parking Layout Section -->
+  <div *ngIf="showDashboard" class="layout-section">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="material-icons">view_quilt</i>
+            Parking Layout
+          </div>
+          <div class="section-actions">
+            <button class="action-btn" (click)="refreshLayout()">
+              <i class="material-icons">refresh</i>
+              Refresh
+            </button>
+            <button class="action-btn" [class.active]="viewMode === 'grid'" (click)="setView('grid')">
+              <i class="material-icons">grid_on</i>
+              Grid
+            </button>
+            <button class="action-btn" [class.active]="viewMode === 'list'" (click)="setView('list')">
+              <i class="material-icons">view_list</i>
+              List
+            </button>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <div class="legend-item">
+            <span class="legend-dot legend-available"></span>
+            Available
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-occupied"></span>
+            Occupied
+          </div>
+        </div>
+
+        <!-- Parking Spots Grid (rendered from service) -->
+        <div class="parking-grid" id="parkingGrid" [class.list-view]="viewMode === 'list'">
+          <ng-container *ngFor="let s of visibleSpots">
+              <!-- For available spots keep booking behavior -->
+              <div *ngIf="s.status === 'available'" id="spot-{{s.id}}" class="parking-spot" [ngClass]="s.status" (click)="selectSpot(s.id)" title="Available">
+                <i class="material-icons spot-icon">local_parking</i>
+                <div class="spot-id">{{ s.id }}</div>
+                <div class="spot-status">{{ s.status | titlecase }}</div>
+              </div>
+
+              <!-- For non-available spots use declarative routerLink for in-app navigation -->
+              <a *ngIf="s.status !== 'available'" id="spot-{{s.id}}" [routerLink]="['/spot', s.id]" class="parking-spot" [ngClass]="s.status" [title]="s.status === 'occupied' ? (s.details || 'Occupied') : (s.status | titlecase)">
+                <i class="material-icons spot-icon">{{ s.status === 'reserved' ? 'bookmark' : s.status === 'occupied' ? 'directions_car' : 'build' }}</i>
+                <div class="spot-id">{{ s.id }}</div>
+                <div class="spot-status">{{ s.status | titlecase }}</div>
+                <div class="spot-details" *ngIf="s.status === 'occupied' && s.details" title="Vehicle number">{{ s.details }}</div>
+                <div class="spot-vehicle" *ngIf="s.status === 'occupied' && s.vehicleType">{{ s.vehicleType | uppercase }}</div>
+              </a>
+            </ng-container>
+        </div>
+
+        <!-- Booking modal for available spots -->
+        <div *ngIf="bookingVisible" class="booking-modal">
+          <div class="booking-dialog">
+            <h3>Book Spot {{ bookingSpot?.id }}</h3>
+            <label>Vehicle Number</label>
+            <input type="text" [(ngModel)]="bookingVehicleNumber" placeholder="e.g. DL-01-AB-1234" />
+
+            <label>Vehicle Type</label>
+            <select [(ngModel)]="bookingVehicleType">
+              <option value="car">Car</option>
+              <option value="bike">Bike</option>
+              <option value="suv">SUV</option>
+            </select>
+
+            <div class="booking-actions">
+              <button class="filter-btn" (click)="bookNow()">Book Now</button>
+              <button class="filter-btn reset" (click)="cancelBooking()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
