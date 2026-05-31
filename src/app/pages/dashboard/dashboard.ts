@@ -9,4 +9,4 @@ import { CommonModule } from '@angular/common';
     styleUrls: ['./dashboard.css'],
 })
 export class Dashboard {
-}
+} 
