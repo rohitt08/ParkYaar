@@ -31,3 +31,4 @@ export class UserService {
     return this.loggedUserData;
   }
 }
+ 

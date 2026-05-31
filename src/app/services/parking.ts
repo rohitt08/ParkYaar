@@ -154,3 +154,4 @@ export class ParkingService {
     try { localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.spots)); } catch(e) {}
   }
 }
+ 

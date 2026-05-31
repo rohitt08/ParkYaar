@@ -17,3 +17,4 @@ export class Master {
     // return this.http.get('https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id=1')
   }
 // }
+ 

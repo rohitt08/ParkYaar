@@ -43,3 +43,4 @@ export class SupportService {
 
   clearAll(){ try { localStorage.removeItem(this.storageKey); } catch(e){} }
 }
+ 
