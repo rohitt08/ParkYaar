@@ -367,3 +367,4 @@ export class Layout implements OnInit {
     return url === '' || url === '/' || url.includes('/dashboard');
   }
 }
+ 
