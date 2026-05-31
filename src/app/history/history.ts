@@ -40,3 +40,4 @@ export class History implements OnInit {
     return this.filteredHistory.reduce((sum, item) => sum + (item.amount || 0), 0);
   }
 }
+ 
