@@ -54,3 +54,4 @@ export class Reports implements OnInit {
     this.vehicleTypeBreakdown = breakdown.map(b => ({ type: b.type, count: b.count, percentage: Math.round((b.count / total) * 1000) / 10 }));
   }
 }
+ 
