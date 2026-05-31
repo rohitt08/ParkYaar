@@ -11,5 +11,5 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./app.css']
 })
 export class App {
-  protected readonly title = signal('ParkMate');
+  protected readonly title = signal('ParkYaar');
 }

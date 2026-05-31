@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ParkYaar</string>
+    <string name="title_activity_main">ParkYaar</string>
+    <string name="package_name">com.parkyaar.app</string>
+    <string name="custom_url_scheme">com.parkyaar.app</string>
+</resources>

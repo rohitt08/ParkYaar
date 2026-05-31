@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ParkMate": {
+    "ParkYaar": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -55,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ParkMate:build:production"
+              "buildTarget": "ParkYaar:build:production"
             },
             "development": {
-              "buildTarget": "ParkMate:build:development"
+              "buildTarget": "ParkYaar:build:development"
             }
           },
           "defaultConfiguration": "development"
