@@ -8,9 +8,12 @@
   width: 100%;
   max-width: 900px;
   background: var(--mm-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--mm-card-border);
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 12px 36px rgba(2, 6, 23, 0.06);
+  box-shadow: var(--mm-elevated-shadow);
 }
 .operator-title {
   font-size: 20px;
@@ -35,7 +38,9 @@
   padding: 12px;
   border-radius: 10px;
   border: 1px solid rgba(2, 6, 23, 0.04);
-  background: linear-gradient(180deg, var(--mm-card), #fbfdff);
+  background: var(--mm-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 @media (max-width: 768px) {

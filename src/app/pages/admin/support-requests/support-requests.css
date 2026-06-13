@@ -1,19 +1,19 @@
 .admin-container{padding:28px;display:flex;justify-content:center}
-.admin-card{width:100%;max-width:980px;background:var(--mm-card);padding:18px;border-radius:12px;box-shadow:0 12px 36px rgba(2,6,23,0.06)}
+.admin-card{width:100%;max-width:980px;background:var(--mm-card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:var(--mm-card-border);padding:18px;border-radius:12px;box-shadow:var(--mm-elevated-shadow)}
 .admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:12px}
 .actions{display:flex;gap:8px}
 .btn{padding:8px 10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:transparent;cursor:pointer}
 .btn-primary{padding:8px 10px;border-radius:8px;border:none;background:linear-gradient(135deg,var(--mm-primary),var(--mm-primary-dark));color:#fff}
 .btn-danger{padding:8px 10px;border-radius:8px;border:none;background:#ef4444;color:#fff}
 .requests-list{display:flex;flex-direction:column;gap:12px}
-.request-card{display:flex;gap:12px;padding:12px;border-radius:10px;background:var(--mm-card);border:1px solid rgba(2,6,23,0.04);align-items:flex-start}
+.request-card{display:flex;gap:12px;padding:12px;border-radius:10px;background:var(--mm-card);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);align-items:flex-start}
 
 .request-card{ transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms cubic-bezier(.2,.8,.2,1) }
 .request-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(2,6,23,0.06) }
 .r-left{min-width:180px;flex:0 0 220px}
 .r-id{font-weight:800;color:var(--mm-primary-dark);margin-bottom:6px}
 .r-meta{font-size:13px;color:var(--mm-muted);margin-bottom:6px}
-.r-message{white-space:pre-wrap;background:linear-gradient(180deg, #fbfdff, #fff);padding:8px;border-radius:8px;border:1px solid rgba(2,6,23,0.03);overflow:auto}
+.r-message{white-space:pre-wrap;background:rgba(255,255,255,0.1);backdrop-filter:blur(4px);padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);overflow:auto}
 
 /* small responsive tweak for message area */
 .r-message { max-height: 260px }

@@ -6,6 +6,9 @@
 .support-card {
   width: 720px;
   background: var(--mm-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--mm-card-border);
   border-radius: 12px;
   padding: 26px;
   box-shadow: 0 20px 56px rgba(2, 6, 23, 0.08);
@@ -28,7 +31,10 @@
 .support-form textarea {
   padding: 12px;
   border-radius: var(--mm-radius-sm);
-  border: 1px solid #e6eef8;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: var(--mm-card-border);
   font-size: 14px;
 }
 .form-actions {

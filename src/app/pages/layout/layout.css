@@ -1,7 +1,7 @@
 /* Layout-specific styles that reuse the central theme variables */
 .layout-root { padding: 18px; background: var(--mm-bg); min-height: calc(100vh - 80px) }
 .main-content { max-width: 1200px; margin: 0 auto; padding: 20px }
-.layout-section { background: var(--mm-card); padding: 20px; border-radius: 12px; box-shadow: 0 8px 30px rgba(2,6,23,0.04) }
+.layout-section { background: var(--mm-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 20px; border-radius: 12px; box-shadow: var(--mm-elevated-shadow); border: var(--mm-card-border); }
 .section-title { font-weight:800; color:var(--mm-primary-dark); font-size:18px }
 
 @media(max-width:768px){ .main-content{ padding:14px } }

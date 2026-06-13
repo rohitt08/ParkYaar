@@ -5,9 +5,12 @@
 }
 .spot-card {
   background: var(--mm-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--mm-card-border);
   padding: 24px;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+  box-shadow: var(--mm-elevated-shadow);
   width: 420px;
 }
 .muted {

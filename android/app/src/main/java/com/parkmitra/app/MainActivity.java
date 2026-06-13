@@ -1,4 +1,4 @@
-package com.parkyaar.app;
+package com.parkmitra.app;
 
 import com.getcapacitor.BridgeActivity;
 

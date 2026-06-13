@@ -1,9 +1,9 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.parkyaar.app',
-  appName: 'ParkYaar',
-  webDir: 'dist/ParkYaar/browser'
+  appId: 'com.parkmitra.app',
+  appName: 'ParkMitra',
+  webDir: 'dist/ParkMitra/browser'
 };
 
 export default config;

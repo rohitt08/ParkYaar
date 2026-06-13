@@ -5,11 +5,14 @@
 }
 
 .page-header {
-  background: white;
+  background: var(--mm-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--mm-card-border);
   border-radius: 16px;
   padding: 32px;
   margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--mm-card-shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,6 +75,9 @@
 
 .metric-card {
   background: var(--mm-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--mm-card-border);
   border-radius: 14px;
   padding: 20px;
   box-shadow: var(--mm-card-shadow);
@@ -138,10 +144,13 @@
 }
 
 .report-card {
-  background: white;
+  background: var(--mm-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--mm-card-border);
   border-radius: 16px;
   padding: 28px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--mm-card-shadow);
 }
 
 .card-header {
@@ -223,7 +232,8 @@
 }
 
 .table-container thead {
-  background: #f8fafc;
+  background: rgba(255, 255, 255, 0.1);
+
 }
 
 .table-container th {
@@ -250,7 +260,7 @@
   color: #111827;
   border-top: 2px solid #e5e7eb;
   border-bottom: none;
-  background: #f8fafc;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .day-name {
@@ -268,10 +278,13 @@
 }
 
 .insights-section {
-  background: white;
+  background: var(--mm-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--mm-card-border);
   border-radius: 16px;
   padding: 32px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--mm-card-shadow);
 }
 
 .insights-section h2 {
@@ -289,9 +302,11 @@
 
 .insight-card {
   padding: 24px;
-  background: #f8fafc;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 12px;
-  border: 1px solid #e5e7eb;
+  border: var(--mm-card-border);
 }
 
 .insight-icon {
